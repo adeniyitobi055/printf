@@ -3,7 +3,7 @@
 
 /**
  * _printf - produces output according to format
- * format: format string
+ * @format: format string
  *
  * Return: Always 0
  */
@@ -21,6 +21,7 @@ int _printf(const char *format, ...)
 			if (format[i + 1] == 'c')
 			{
 				char a = va_arg(args, int);
+
 				write(1, &a, 1);
 				i++;
 			}
@@ -28,6 +29,7 @@ int _printf(const char *format, ...)
 			{
 				unsigned int j = 0;
 				char *b = va_arg(args, char *);
+
 				while (b[j] != '\0')
 				{
 					write(1, &b[j], 1);
