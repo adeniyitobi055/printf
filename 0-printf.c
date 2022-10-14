@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	unsigned int i;
+	unsigned int i, len = 0;
 
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
@@ -23,6 +23,7 @@ int _printf(const char *format, ...)
 				char a = va_arg(args, int);
 
 				write(1, &a, 1);
+				len++;
 				i++;
 			}
 			else if (format[i + 1] == 's')
@@ -33,6 +34,7 @@ int _printf(const char *format, ...)
 				while (b[j] != '\0')
 				{
 					write(1, &b[j], 1);
+					len++;
 					j++;
 				}
 				i++;
@@ -41,9 +43,10 @@ int _printf(const char *format, ...)
 		else
 		{
 			write(1, &format[i], 1);
+			len++;
 		}
 	}
 	va_end(args);
 	write(1, "\n", 1);
-	return (0);
+	return (len);
 }
