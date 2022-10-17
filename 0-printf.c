@@ -16,20 +16,20 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (i = 0; i < len; i++)
 	{
-		if (format[0] == '%')
+		if (format[i] == '%')
 		{
-			format++;
-			format_spec(format, args);
+			format[i + 1];
+			format_spec(format, args, (i + 1));
 			length++;
 			i++;
 		}
 		else
 		{
-			print_char(*format);
+			print_char(format[i]);
 			length++;
 		}
 	}
 	va_end(args);
-	format++;
+	format[i + 1];
 	return (length);
 }

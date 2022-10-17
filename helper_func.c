@@ -8,18 +8,18 @@
  * Return: Nothing
  */
 
-void format_spec(char *str, va_list args)
+void format_spec(const char *str, va_list args, int i)
 {
 	char *string;
 
-	switch (str[0])
+	switch (str[i])
 	{
 		case 'c':
 			print_char(va_arg(args, int));
 			return;
 		case 's':
 			string = va_arg(args, char *);
-			print_str(str);
+			print_str(string);
 			return;
 		case '%':
 			print_char('%');

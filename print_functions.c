@@ -7,11 +7,11 @@
  * Return: length of the string
  */
 
-unsigned int str_len(char *str)
+unsigned int str_len(const char *str)
 {
 	unsigned int len = 0;
 
-	while (*str++ != '\0')
+	while (str[len] != '\0')
 		len++;
 	return (len);
 }
@@ -24,13 +24,13 @@ unsigned int str_len(char *str)
  */
 
 
-void print_str(char *str)
+void print_str(const char *str)
 {
 	unsigned int count;
 	unsigned int len = str_len(str);
 
 	for (count = 0; count < len; count++)
-		write(1, str++, 1);
+		write(1, &str[count], 1);
 }
 
 /**
