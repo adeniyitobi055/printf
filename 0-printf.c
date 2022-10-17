@@ -10,43 +10,26 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	unsigned int i, len = 0;
+	unsigned int i, length = 0, len;
 
+	len = str_len(format);
 	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; i < len; i++)
 	{
-		if (format[i] == '%' && format[i + 1] == '%')
+		if (format[0] == '%')
 		{
-			print_char('%');
-			len++;
+			format++;
+			format_spec(format, args);
+			length++;
 			i++;
-		}
-
-		if (format[i] == '%')
-		{
-			if (format[i + 1] == 'c')
-			{
-				char a = (char)va_arg(args, int);
-
-				print_char(a);
-				len++;
-				i++;
-			}
-			else if (format[i + 1] == 's')
-			{
-				char *b = va_arg(args, char *);
-
-				print_str(b);
-				len += str_len(b);
-				i++;
-			}
 		}
 		else
 		{
-			print_char(format[i]);
-			len++;
+			print_char(*format);
+			length++;
 		}
 	}
 	va_end(args);
-	return (len);
+	format++;
+	return (length);
 }
