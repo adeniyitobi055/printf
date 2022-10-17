@@ -44,3 +44,26 @@ int print_char(char c)
 {
 	return (write(1, &c, 1));
 }
+
+/**
+ * printf_num - prints a number to stdout
+ * @num: number
+ *
+ * Return: Nothing
+ */
+
+void print_num(int num)
+{
+	if (num < 0)
+	{
+		print_char('-');
+		num *= -1;
+	}
+	if (num / 10 == 0)
+	{
+		print_char(num + 48);
+		return;
+	}
+	print_num(num / 10);
+	print_char((num % 10) + 48);
+}
