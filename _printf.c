@@ -18,7 +18,6 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			format[i + 1];
 			format_spec(format, args, (i + 1));
 			length++;
 			i++;
@@ -30,6 +29,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	format[i + 1];
 	return (length);
 }

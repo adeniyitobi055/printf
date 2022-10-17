@@ -25,11 +25,11 @@ void format_spec(const char *str, va_list args, int i)
 		case '%':
 			print_char('%');
 			return;
-			/*case 'd':
+		case 'd':
 			print_num(va_arg(args, int));
 			return;
 		case 'i':
 			print_num(va_arg(args, int));
-			return;*/
+			return;
 	}
 }
