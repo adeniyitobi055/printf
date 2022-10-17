@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
  * str_len - get length of a string
@@ -46,7 +46,7 @@ int print_char(char c)
 }
 
 /**
- * printf_num - prints a number to stdout
+ * print_num - prints a number to stdout
  * @num: number
  *
  * Return: Nothing
