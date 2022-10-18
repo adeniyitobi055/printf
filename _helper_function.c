@@ -10,11 +10,19 @@
 int print_binary(int num)
 {
 	int quotient, remainder, len = 0;
+	unsigned int value;
 
-	if (num == 0)
+	if (num < 0)
+	{
+		print_char(45);
+		len++;
+		num *= -1;
+	}
+	value = num;
+	if (value == 0)
 		return (len);
-	quotient = num / 2;
-	remainder = num % 2;
+	quotient = value / 2;
+	remainder = value % 2;
 	len += print_binary(quotient);
 	print_char(remainder + 48);
 	len++;
