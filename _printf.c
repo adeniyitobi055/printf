@@ -18,18 +18,16 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			while (format[i + 1] == ' ')
+			i++;
+			while (format[i] == ' ')
 			{
 				i++;
 			}
-			format_spec(format, args, (i + 1));
-			length++;
-			i++;
+			length += format_spec(format, args, i);
 		}
 		else
 		{
-			print_char(format[i]);
-			length++;
+			length += print_char(format[i]);
 		}
 	}
 	va_end(args);

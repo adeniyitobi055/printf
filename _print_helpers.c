@@ -20,24 +20,25 @@ unsigned int str_len(const char *str)
  * print_str - prints a string
  * @str: string
  *
- * Return: Nothing
+ * Return: number of characters printed to stdout
  */
 
 
-void print_str(const char *str)
+int print_str(const char *str)
 {
-	unsigned int count;
+	unsigned int count, length = 0;
 	unsigned int len = str_len(str);
 
 	for (count = 0; count < len; count++)
-		write(1, &str[count], 1);
+		length += write(1, &str[count], 1);
+	return (length);
 }
 
 /**
  * print_char - prints a character to stdout
  * @c: character
  *
- * Return: 0 or anything if it fails
+ * Return: number of characters printed to stdout
  */
 
 int print_char(char c)
@@ -49,21 +50,29 @@ int print_char(char c)
  * print_num - prints a number to stdout
  * @num: number
  *
- * Return: Nothing
+ * Return: number of characters printed to stdout
  */
 
-void print_num(int num)
+int print_num(long num)
 {
+	unsigned int value;
+	int len = 0;
+
 	if (num < 0)
 	{
 		print_char('-');
+		len++;
 		num *= -1;
 	}
-	if (num / 10 == 0)
+	value = num;
+	if (value / 10 == 0)
 	{
-		print_char(num + 48);
-		return;
+		print_char(value + 48);
+		len++;
+		return (len);
 	}
-	print_num(num / 10);
-	print_char((num % 10) + 48);
+	len += print_num(value / 10);
+	print_char((value % 10) + 48);
+	len++;
+	return (len);
 }
