@@ -51,7 +51,7 @@ int format_spec(const char *str, va_list args, int i)
 			return (1);
 		case 's':
 			string = va_arg(args, char *);
-			if (string = NULL)
+			if (string == NULL)
 				return (0);
 			len += print_str(string);
 			return (len);
