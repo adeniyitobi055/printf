@@ -11,6 +11,6 @@ int print_str(const char *str);
 int print_char(char c);
 int print_num(long num);
 int format_spec(const char *str, va_list args, int i);
-
+int print_binary(int num);
 
 #endif
