@@ -4,6 +4,7 @@
  * format_spec - format specifier.
  * @str: format string
  * @args: argument list
+ * @i: current loop point
  *
  * Return: Nothing
  */
