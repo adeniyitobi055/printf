@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * printf_octal - Convert a number to octal.
+ * print_octal - Convert a number to octal.
  * @num: number.
  *
  * Return: Nothing
@@ -75,7 +75,7 @@ int print_hexa(unsigned int num)
 }
 
 /**
- * print_hex_upper - convert a number to hexadecimal.
+ * print_hexa_upper - convert a number to hexadecimal.
  * @num: number.
  *
  * Return: Nothing.
