@@ -28,13 +28,6 @@ int handle_struct(va_list args, char c)
 		if (c == picker[i].symbol)
 			length = picker[i].ptr(args);
 	}
-
-	if (c)
-	{
-		print_char('%');
-		print_char(c);
-		length += 2;
-	}
 	return (length);
 }
 
