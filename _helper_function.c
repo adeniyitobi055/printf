@@ -7,22 +7,16 @@
  * Return: number of characters printed
  */
 
-int print_binary(int num)
+int print_binary(unsigned int num)
 {
 	int quotient, remainder, len = 0;
-	unsigned int value;
 
-	if (num < 0)
+	if (num == 0)
 	{
-		print_char(45);
-		len++;
-		num *= -1;
-	}
-	value = num;
-	if (value == 0)
 		return (len);
-	quotient = value / 2;
-	remainder = value % 2;
+	}
+	quotient = num / 2;
+	remainder = num % 2;
 	len += print_binary(quotient);
 	print_char(remainder + 48);
 	len++;
