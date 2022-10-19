@@ -30,7 +30,7 @@ int print_octal(unsigned int num)
  * Return: Nothing.
  */
 
-int print_hex(unsigned int num)
+int print_hexa(unsigned int num)
 {
 	int quotient, remainder, len = 0;
 
@@ -40,7 +40,7 @@ int print_hex(unsigned int num)
 	}
 	quotient = num / 16;
 	remainder = num % 16;
-	len += print_hex(quotient);
+	len += print_hexa(quotient);
 	switch (remainder)
 	{
 		case 10:
@@ -72,4 +72,55 @@ int print_hex(unsigned int num)
 			len++;
 	}
 	return (len);
-}	
+}
+
+/**
+ * print_hex_upper - convert a number to hexadecimal.
+ * @num: number.
+ *
+ * Return: Nothing.
+ */
+
+int print_hexa_upper(unsigned int num)
+{
+	int quotient, remainder, len = 0;
+
+	if (num == 0)
+	{
+		return (len);
+	}
+	quotient = num / 16;
+	remainder = num % 16;
+	len += print_hexa_upper(quotient);
+	switch (remainder)
+	{
+		case 10:
+			print_char('A');
+			len++;
+			break;
+		case 11:
+			print_char('B');
+			len++;
+			break;
+		case 12:
+			print_char('C');
+			len++;
+			break;
+		case 13:
+			print_char('D');
+			len++;
+			break;
+		case 14:
+			print_char('E');
+			len++;
+			break;
+		case 15:
+			print_char('F');
+			len++;
+			break;
+		default:
+			print_char(remainder + 48);
+			len++;
+	}
+	return (len);
+}
