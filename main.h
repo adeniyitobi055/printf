@@ -12,5 +12,8 @@ int print_char(char c);
 int print_num(long num);
 int format_spec(const char *str, va_list args, int i);
 int print_binary(unsigned int num);
+int print_octal(unsigned int num);
+int print_hexa(unsigned int num);
+int print_hexa_upper(unsigned int num);
 
 #endif
