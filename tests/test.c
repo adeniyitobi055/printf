@@ -15,6 +15,8 @@ int main(void)
 	printf("Character:[%c]\n", 'H');
 	_printf("String:[%s]\n", "I am a string !");
 	printf("String:[%s]\n", "I am a string !");
+	_printf("Unsigned octal:[%o]\n", ui);
+	printf("Unsigned octal:[%o]\n", ui);
 	len = _printf("Percent:[%d]\n",600);
 	len2 = printf("Percent:[%d]\n", 600);
 	_printf("Len:[%d]\n", len);
