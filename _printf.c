@@ -1,10 +1,42 @@
 #include "main.h"
 
 /**
+ * handle_struct - handle fuction pointers
+ * @args: argument
+ * @c: character
+ *
+ * Return: number of characters printed
+ */
+
+int handle_struct(va_list args, char c)
+{
+	int length, i;
+	func picker[] = {
+		{'c', prt_char},
+		{'s', print_str},
+		{'d', handle_digit},
+		{'i', handle_digit},
+		{'u', handle_unsigned_int},
+		{'o', print_octal},
+		{'x', handle_hexa},
+		{'X', handle_upper_hexa},
+		{'b', print_binary}
+	};
+
+	for (i = 0; i < 9; i++)
+	{
+		if (c == picker[i].symbol)
+			length = picker[i].ptr(args);
+	}
+	return (length);
+}
+
+
+/**
  * _printf - produces output according to format
  * @format: format string
  *
- * Return: Always 0
+ * Return: number of characters printed
  */
 
 int _printf(const char *format, ...)
@@ -13,7 +45,7 @@ int _printf(const char *format, ...)
 	unsigned int i, length = 0, len;
 
 	if (format == NULL)
-		return (0);
+		return (-1);
 	len = str_len(format);
 	va_start(args, format);
 	for (i = 0; i < len; i++)
@@ -25,7 +57,15 @@ int _printf(const char *format, ...)
 			{
 				i++;
 			}
-			length += format_spec(format, args, i);
+			if (format[i] == '%')
+			{
+				print_char('%');
+				length++;
+				continue;
+			}
+			length += handle_struct(args, format[i]);
+			if (format[i] == '\0')
+				return (-1);
 		}
 		else
 		{

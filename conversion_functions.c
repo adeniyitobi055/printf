@@ -2,32 +2,53 @@
 
 /**
  * print_octal - Convert a number to octal.
- * @num: number.
+ * @args: argument.
  *
- * Return: Nothing
+ * Return: number of characters printed
  */
 
-int print_octal(unsigned int num)
+int print_octal(va_list args)
 {
-	int quotient, remainder, len = 0;
+	int len;
+	unsigned int num = va_arg(args, unsigned int);
 
 	if (num == 0)
 	{
+		len = print_char(48);
 		return (len);
 	}
-	quotient = num / 8;
-	remainder = num % 8;
-	len += print_octal(quotient);
-	print_char(remainder + 48);
-	len++;
+	len = convert_unsigned_num(num, 8);
 	return (len);
 }
+
+/**
+ * print_binary - handle 'b' format
+ * @args: argument
+ *
+ * Return: number of characters printed
+ */
+
+int print_binary(va_list args)
+{
+	unsigned int num = va_arg(args, unsigned int);
+	int len;
+
+	if (num == 0)
+	{
+		len = print_char(48);
+		return (len);
+	}
+	len = convert_unsigned_num(num, 2);
+	return (len);
+}
+
+
 
 /**
  * print_hexa - convert a number to hexadecimal(lowercase)
  * @num: number.
  *
- * Return: Nothing.
+ * Return: number of characters printed
  */
 
 int print_hexa(unsigned int num)
@@ -78,7 +99,7 @@ int print_hexa(unsigned int num)
  * print_hexa_upper - convert a number to hexadecimal.
  * @num: number.
  *
- * Return: Nothing.
+ * Return: number of characters printed
  */
 
 int print_hexa_upper(unsigned int num)

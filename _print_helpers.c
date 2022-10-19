@@ -18,19 +18,24 @@ unsigned int str_len(const char *str)
 
 /**
  * print_str - prints a string
- * @str: string
+ * @args: argument
  *
  * Return: number of characters printed to stdout
  */
 
-
-int print_str(const char *str)
+int print_str(va_list args)
 {
-	unsigned int count, length = 0;
-	unsigned int len = str_len(str);
+	int length = 0;
+	unsigned int len;
+	char *string = va_arg(args, char *);
 
-	for (count = 0; count < len; count++)
-		length += write(1, &str[count], 1);
+	if (string == NULL)
+	{
+		length = write(1, "(null)", 6);
+		return (length);
+	}
+	len = str_len(string);
+	length += write(1, string, len);
 	return (length);
 }
 
@@ -75,4 +80,21 @@ int print_num(long num)
 	print_char((value % 10) + 48);
 	len++;
 	return (len);
+}
+
+
+/**
+ * prt_char - handle 'c' format
+ * @args: argument
+ *
+ * Return: 1
+ */
+
+int prt_char(va_list args)
+{
+	char c = va_arg(args, int);
+
+	if (c == '\0')
+		return (1);
+	return (write(1, &c, 1));
 }
