@@ -67,6 +67,12 @@ int format_spec(const char *str, va_list args, int i)
 		case 'o':
 			len += print_octal(va_arg(args, unsigned int));
 			return (len);
+		case 'x':
+			len += print_hexa(va_arg(args, unsigned int));
+			return (len);
+		case 'X':
+			len += print_hexa_upper(va_arg(args, unsigned int));
+			return (len);
 	}
 	return (0);
 }
