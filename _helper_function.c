@@ -59,7 +59,7 @@ int format_spec(const char *str, va_list args, int i)
 			len += print_num(va_arg(args, int));
 			return (len);
 		case 'b':
-			len += print_binary(va_arg(args, int));
+			len += print_binary(va_arg(args, unsigned int));
 			return (len);
 		case 'u':
 			len += print_num(va_arg(args, unsigned int));
