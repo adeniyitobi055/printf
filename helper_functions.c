@@ -13,6 +13,11 @@ int handle_unsigned_int(va_list args)
 	int len;
 
 	num = va_arg(args, unsigned int);
+	if (num == 0)
+	{
+		len = print_char(48);
+		return (len);
+	}
 	len = convert_unsigned_num(num, 10);
 	return (len);
 }
