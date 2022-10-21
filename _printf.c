@@ -20,10 +20,12 @@ int handle_struct(va_list args, char c)
 		{'o', print_octal},
 		{'x', handle_hexa},
 		{'X', handle_upper_hexa},
-		{'b', print_binary}
+		{'b', print_binary},
+		{'r', print_reverse},
+		{'R', print_rot13}
 	};
 
-	for (i = 0; i < 9; i++)
+	for (i = 0; i < 11; i++)
 	{
 		if (c == picker[i].symbol)
 			length = picker[i].ptr(args);

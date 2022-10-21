@@ -35,5 +35,9 @@ int print_binary(va_list args);
 int print_octal(va_list args);
 int print_hexa(unsigned int num);
 int print_hexa_upper(unsigned int num);
+void *str_cpy(char *str, unsigned int size);
+int print_reverse(va_list args);
+int print_rot13(va_list args);
+
 
 #endif
