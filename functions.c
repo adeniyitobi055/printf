@@ -43,6 +43,8 @@ int print_reverse(va_list args)
 		return (length);
 	}
 	len = str_len(string);
+	if (len == 0)
+		return (0);
 	reversed = malloc(sizeof(char) * (len + 1));
 	if (reversed == NULL)
 		return (0);
